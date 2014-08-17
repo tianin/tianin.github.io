@@ -1,74 +1,145 @@
-<!DOCTYPE html>
-<html>
 
-  <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Tianin.github.io : " />
+<html><!--http://www.martamattsson.com/Work-->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Tinin</title>
+<head>
+<style>
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+	a{text-decoration:none;}
+body{margin:0 auto;font-family: 'Open Sans', sans-serif;background-color:#fff;}
+#bkg {background-image:url(bkg.jpg);background-position:center center;background-repeat:no-repeat;background-size:cover;position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1000;}
+.logo{margin: 0 auto;
+max-width: 70px;
+opacity: 0.9;
+top: 32px;
+position: relative;
+padding-bottom:30px;
+transition: opacity 0.32s ease-in-out;
+    -moz-transition: opacity 0.32 ease-in-out;
+    -webkit-transition: opacity .32s ease-in-out;}
+.logo img{max-width:80px;}
+.logo:hover {
+    opacity: 0.6;	
+}
+hr{width:60%;border:1px solid rgba(0,0,0,0.1)}
+.nav{margin: 0 auto;text-align: center;z-index:100;}
+.nav a{cursor:pointer;color:#2c2c2c;display: inline-block;transition: color 0.28s ease-in-out;
+-moz-transition: color 0.28s ease-in-out;
+-webkit-transition: color 0.28s ease-in-out;padding:5px 10px;
+}
+.nav a:hover{color:#777;text-decoration:underline; padding-bottom:3px;}
+.screen{width:100%;min-height:100%;padding-top:60px;}
+#work{background-color:rgba(0,0,0,0.2);}
+#cv{background-color:rgba(255,255,255,0.2);}
+.img{max-width:200px;display:inline-block;padding:10px 20px;}
+.img img{width:200px;height:200px;overflow: hidden;border-radius: 50%;display:block;}
+.dis{text-align: center;padding-top:10px;}
+.contents{margin:0 auto;max-width:1000px;}
+@media screen and (max-width: 780px) {
+body{overflow:auto;}
+#bkg{display:none;}
+#work{background-color:#fff;}
+.nav a{padding:10px 5px;}
+}
+</style>
+<script src="jquery.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+<script src="animatescroll.min.js"></script>
+<script src="jquery.jscrollpane.min.js"></script>
+<script>
+var width=$(window).width();
+var device=(width<=768)?"small":"large";
 
-    <title>Tianin.github.io</title>
-  </head>
+$(function () {
+if(device=="large"){
+}
 
-  <body>
+    var bar = $('.nav');
+    var top = bar.css('top');
+    $(window).scroll(function () {
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/tianin">View on GitHub</a>
+        if ($(this).scrollTop() > 0) {
+            bar.stop().css({
+                'position': 'absolute'
+            });
+        }
 
-          <h1 id="project_title">Tianin.github.io</h1>
-          <h2 id="project_tagline"></h2>
+        if ($(this).scrollTop() > 120) {
+            $(".nav").css("position","fixed");
+$(".nav").css("top","0");
+$(".nav").css("left","0");
+$(".nav").css("width","100%");
+if(device=="large")$(".nav a").css("padding","10px 20px");
+$(".nav").css("background-color","rgba(200,200,200,0.6)");
+$(".nav").css("border-bottom","3px solid rgba(200,200,200,0.8)");
+        } else {
+            $(".nav").css("position","relative");
+$(".nav").css("background-color","rgba(255,255,255,0.0)");
+$(".nav").css("border-bottom","0px solid rgba(255,255,255,0.0)");
+        }
+    });
+});
 
-        </header>
-    </div>
+</script>
+</head>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+<body onload="">
+<div id="bkg">
+</div>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<div class="screen" id=home>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+<div class="logo">
+        <a href="index.html">
+        <img src="logo2.png"></a>
+</div><hr>
+<div class="nav">
+<a onclick="$('#home').animatescroll({scrollSpeed:1000});">HOME</a>
+<a onclick="$('#work').animatescroll({scrollSpeed:1000});">WORK</a>
+<a onclick="$('#about').animatescroll({scrollSpeed:1000});">ABOUT</a>
+<a onclick="$('#work').animatescroll({scrollSpeed:1000});">CONTACT</a>
+<a onclick="$('#cv').animatescroll({scrollSpeed:1000});">CV</a>
+<a href="index.html">GALLERIES</a>
+<a href="index.html">PRESS</a>
+</div>
+</div>
+<div class="screen" id="work">
+<div class="contents">
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<div class="img" data-scroll-reveal="enter left, move 40px, over 2s, wait 0.3s"><img src="work.jpg"><div class="dis">Work</div></div>
+<div class="img" data-scroll-reveal="enter top over 3s after 0.5s"><img src="work.jpg"><div class="dis">Work</div></div>
+<div class="img" data-scroll-reveal="enter top"><img src="work.jpg"><div class="dis">Work</div></div>
+<div class="img" data-scroll-reveal="enter bottom over 1s and move 100px"><img src="work.jpg"><div class="dis">Work</div></div>
+<div class="img" data-scroll-reveal="enter left"><img src="work.jpg"><div class="dis">Work</div></div>
+<div class="img" data-scroll-reveal='enter left and move 50px over 1.33s'><img src="work.jpg"><div class="dis">Work</div></div>
+<div class="img" data-scroll-reveal="enter bottom over 1s and move 100px"><img src="work.jpg"><div class="dis">Work</div></div>
+<div class="img" data-scroll-reveal="enter top over 3s after 0.5s"><img src="work.jpg"><div class="dis">Work</div></div>
+<div class="img" data-scroll-reveal="enter bottom over 1s and move 100px"><img src="work.jpg"><div class="dis">Work</div></div>
+<div class="img" data-scroll-reveal="enter top over 1s and move 200px after 0.3s"><img src="work.jpg"><div class="dis">Work</div></div>
+<div class="img" data-scroll-reveal="enter bottom over 1s and move 100px"><img src="work.jpg"><div class="dis">Work</div></div>
+</div>
+</div>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<div class="screen" id="about">
+<div class="contents" data-scroll-reveal="enter left, move 40px, over 2s, wait 0.3s">
+<div class='t1'>test 1</div>
+<h2>Artist Statement</h2>
+The aim of my work is to encourage the wearer to play with the accessories, exploring possible shapes and positions. The inspiration of my work comes from kaleidoscopes, architecture, magic balls and fractal patterns as well as natural forms. Some of work are derived from the parametric design and the work of Zaha Hadid. I am interested in products that are changeable and move mechanically. Besides thisAdditionally, I hope my designs promote playful and inquisitive feelings emotions for the wearer. The main focus of my work is to integrate mechanical movements with natural forms which evoke feelings and create an emphatic visual effect due to contrasting colours. <br><br>
+I work with resin, plastic and silver as my materials due to their lightness in weight. Every series uses one element as a component. To expand the wearers interaction with my work, I try to create jewellery that its function can be transformed allowing one piece of jewellery to be worn in different ways and on different parts of the body.
+</div>
+</div>
+</body>
+<script src='scrollReveal.js'></script>
+  <script>
+(function($) {
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+        'use strict';
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
-    
-
-  </body>
+        window.scrollReveal = new scrollReveal({ reset: true, move: '50px' });
+      })();
+  </script>
 </html>
