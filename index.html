@@ -10,7 +10,7 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 	a{text-decoration:none;}
 body{margin:0 auto;font-family: 'Open Sans', sans-serif;background-color:#fff;}
-#bkg {background-image:url(https://cloud.githubusercontent.com/assets/8266907/3957103/8a8761ea-2712-11e4-8402-e327157768e9.jpg);background-position:center center;background-repeat:no-repeat;background-size:cover;position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1000;}
+#home {background-image:url(https://cloud.githubusercontent.com/assets/8266907/3957103/8a8761ea-2712-11e4-8402-e327157768e9.jpg);background-position:center center;background-repeat:no-repeat;background-size:cover;position:relative;top:0;left:0;width:100%;height:100%;}
 .logo{margin: 0 auto;
 max-width: 70px;
 opacity: 0.9;
@@ -25,14 +25,19 @@ transition: opacity 0.32s ease-in-out;
     opacity: 0.6;	
 }
 hr{width:60%;border:1px solid rgba(0,0,0,0.1)}
-.nav{margin: 0 auto;text-align: center;z-index:100;}
-.nav a{cursor:pointer;color:#2c2c2c;display: inline-block;transition: color 0.28s ease-in-out;
+.nav{margin: 0 auto;max-width: 700px;}
+.navbar{margin: 0 auto;width: 100%;text-align: center;height:70px;position:fixed;top:0; display:none;background-color:#FCFCFC;overflow-hidden;border-bottom:3px solid #ddd;}
+.navbar ul{list-style: none;}
+.navbar li{display: inline-block;padding:0 10px;}
+.navbar a{height:44px;width:100%;}
+.navbar a,.nav a{cursor:pointer;display: inline-block;color:#2c2c2c;transition: color 0.28s ease-in-out;
 -moz-transition: color 0.28s ease-in-out;
--webkit-transition: color 0.28s ease-in-out;padding:5px 10px;
+-webkit-transition: color 0.28s ease-in-out;padding:0 10px;
 }
-.nav a:hover{color:#777;text-decoration:underline; padding-bottom:3px;}
+.nav a:hover,.navbar a:hover{color:#aaa;text-decoration:underline; padding-bottom:3px;}
+
 .screen{width:100%;min-height:100%;padding-top:60px;}
-#work{background-color:rgba(0,0,0,0.2);}
+#work{background-color:rgba(190,190,190,0.2);}
 #cv{background-color:rgba(255,255,255,0.2);}
 .img{max-width:200px;display:inline-block;padding:10px 20px;}
 .img img{width:200px;height:200px;overflow: hidden;border-radius: 50%;display:block;}
@@ -42,7 +47,7 @@ hr{width:60%;border:1px solid rgba(0,0,0,0.1)}
 body{overflow:auto;}
 #bkg{display:none;}
 #work{background-color:#fff;}
-.nav a{padding:10px 5px;}
+
 }
 </style>
 <script src="jquery.min.js"></script>
@@ -54,31 +59,27 @@ var width=$(window).width();
 var device=(width<=768)?"small":"large";
 
 $(function () {
+if(width<815&&width>=730){
+$(".navbar li").css("padding","0 2px");
+}else if(width<730&&width>=500){
+$(".navbar li").css("padding","0 0");
+$(".navbar a").css("padding","0 5px");
+$(".navbar li").css("font-size","12px");
+}else if(width<500){
+$(".navbar li").css("padding","0 0");
+$(".navbar a").css("padding","0 1px");
+$(".navbar li").css("font-size","11px");
+}
 if(device=="large"){
 }
 
-    var bar = $('.nav');
-    var top = bar.css('top');
     $(window).scroll(function () {
 
-        if ($(this).scrollTop() > 0) {
-            bar.stop().css({
-                'position': 'absolute'
-            });
-        }
-
         if ($(this).scrollTop() > 120) {
-            $(".nav").css("position","fixed");
-$(".nav").css("top","0");
-$(".nav").css("left","0");
-$(".nav").css("width","100%");
-if(device=="large")$(".nav a").css("padding","10px 20px");
-$(".nav").css("background-color","rgba(200,200,200,0.6)");
-$(".nav").css("border-bottom","3px solid rgba(200,200,200,0.8)");
+		$(".navbar").css("display","block");
+			
         } else {
-            $(".nav").css("position","relative");
-$(".nav").css("background-color","rgba(255,255,255,0.0)");
-$(".nav").css("border-bottom","0px solid rgba(255,255,255,0.0)");
+            $(".navbar").css("display","none");
         }
     });
 });
@@ -86,12 +87,22 @@ $(".nav").css("border-bottom","0px solid rgba(255,255,255,0.0)");
 </script>
 </head>
 
-<body onload="">
-<div id="bkg">
-</div>
+<body>
+<div class="navbar" role="navigation">
+      
+          <ul>
+             <li><a onclick="$('#home').animatescroll({scrollSpeed:1000});">HOME</a></li>
+ <li><a onclick="$('#work').animatescroll({scrollSpeed:1000});">WORK</a></li>
+ <li><a onclick="$('#about').animatescroll({scrollSpeed:1000});">ABOUT</a></li>
+ <li><a onclick="$('#work').animatescroll({scrollSpeed:1000});">CONTACT</a></li>
+ <li><a onclick="$('#cv').animatescroll({scrollSpeed:1000});">CV</a></li>
+ <li><a href="index.html">GALLERIES</a></li>
+ <li><a href="index.html">PRESS</a></li>
+          </ul>
+    </div>
 
 <div class="screen" id=home>
-
+ 
 <div class="logo">
         <a href="index.html">
         <img src="https://cloud.githubusercontent.com/assets/8266907/3957104/910f3cea-2712-11e4-8f48-d921a42ec3bc.png"></a><!--logo.png-->
@@ -108,38 +119,26 @@ $(".nav").css("border-bottom","0px solid rgba(255,255,255,0.0)");
 </div>
 <div class="screen" id="work">
 <div class="contents">
-
-
-<div class="img" data-scroll-reveal="enter left, move 40px, over 2s, wait 0.3s"><img src="https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg"><div class="dis">Work</div></div>
-<div class="img" data-scroll-reveal="enter top over 3s after 0.5s"><img src="https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg"><div class="dis">Work</div></div>
-<div class="img" data-scroll-reveal="enter top"><img src="https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg"><div class="dis">Work</div></div>
-<div class="img" data-scroll-reveal="enter bottom over 1s and move 100px"><img src="https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg"><div class="dis">Work</div></div>
-<div class="img" data-scroll-reveal="enter left"><img src="https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg"><div class="dis">Work</div></div>
-<div class="img" data-scroll-reveal='enter left and move 50px over 1.33s'><img src="https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg"><div class="dis">Work</div></div>
-<div class="img" data-scroll-reveal="enter bottom over 1s and move 100px"><img src="https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg"><div class="dis">Work</div></div>
-<div class="img" data-scroll-reveal="enter top over 3s after 0.5s"><img src="https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg"><div class="dis">Work</div></div>
-<div class="img" data-scroll-reveal="enter bottom over 1s and move 100px"><img src="https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg"><div class="dis">Work</div></div>
-<div class="img" data-scroll-reveal="enter top over 1s and move 200px after 0.3s"><img src="https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg"><div class="dis">Work</div></div>
-<div class="img" data-scroll-reveal="enter bottom over 1s and move 100px"><img src="https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg"><div class="dis">Work</div></div>
+<div class="img"><img src="https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg"><div class="dis">Work</div></div>
+<div class="img"><img src="https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg"><div class="dis">Work</div></div>
+<div class="img"><img src="https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg"><div class="dis">Work</div></div>
+<div class="img"><img src="https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg"><div class="dis">Work</div></div>
+<div class="img"><img src="https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg"><div class="dis">Work</div></div>
+<div class="img"><img src="https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg"><div class="dis">Work</div></div>
+<div class="img"><img src="https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg"><div class="dis">Work</div></div>
+<div class="img"><img src="https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg"><div class="dis">Work</div></div>
+<div class="img"><img src="https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg"><div class="dis">Work</div></div>
+<div class="img"><img src="https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg"><div class="dis">Work</div></div>
+<div class="img"><img src="https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg"><div class="dis">Work</div></div>
 </div>
 </div>
 
 <div class="screen" id="about">
-<div class="contents" data-scroll-reveal="enter left, move 40px, over 2s, wait 0.3s">
-<div class='t1'>test 1</div>
+<div class="contents">
 <h2>Artist Statement</h2>
 The aim of my work is to encourage the wearer to play with the accessories, exploring possible shapes and positions. The inspiration of my work comes from kaleidoscopes, architecture, magic balls and fractal patterns as well as natural forms. Some of work are derived from the parametric design and the work of Zaha Hadid. I am interested in products that are changeable and move mechanically. Besides thisAdditionally, I hope my designs promote playful and inquisitive feelings emotions for the wearer. The main focus of my work is to integrate mechanical movements with natural forms which evoke feelings and create an emphatic visual effect due to contrasting colours. <br><br>
 I work with resin, plastic and silver as my materials due to their lightness in weight. Every series uses one element as a component. To expand the wearers interaction with my work, I try to create jewellery that its function can be transformed allowing one piece of jewellery to be worn in different ways and on different parts of the body.
 </div>
 </div>
 </body>
-<script src='scrollReveal.js'></script>
-  <script>
-(function($) {
-
-        'use strict';
-
-        window.scrollReveal = new scrollReveal({ reset: true, move: '50px' });
-      })();
-  </script>
 </html>
