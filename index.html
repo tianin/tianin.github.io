@@ -55,7 +55,7 @@ background-color: #fff;
     -webkit-box-shadow: 0 1px 5px rgba(34, 25, 25, .8);
     filter: progid:DXImageTransform.Microsoft.Shadow(color = #979797, direction = 135, strength = 3);
 }
-.img img{max-width:100%;min-height:100px;overflow: hidden;display:block;}
+.img img{max-width:100%;min-width:400px;overflow: hidden;display:block;}
 .dis{text-align: center;padding-top:10px;}
 .contents{margin:0 auto;max-width:1000px;z-index: 1;}
 button{border:1px solid #CFCFCF ;
@@ -174,7 +174,9 @@ if(c=='All'){
 });
 }	
 $(document).ready(function() {
-$('#grid').shuffle('update');
+window.setTimeout(function() {
+    $('#grid').shuffle('update');
+}, 1000);
   var $grid = $('#grid')
 
   $grid.shuffle({
