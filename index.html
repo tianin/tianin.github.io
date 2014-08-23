@@ -26,8 +26,8 @@ transition: opacity 0.32s ease-in-out;
 }
 hr{width:60%;border:1px solid rgba(0,0,0,0.1)}
 .nav{margin: 0 auto;max-width: 700px;}
-.navbar{margin: 0 auto;width: 100%;text-align: center;height:70px;position:fixed;top:0; display:none;background-color:#FCFCFC;overflow-hidden;border-bottom:3px solid #ddd;}
-.navbar ul{list-style: none;}
+.navbar{margin: 0 auto;width: 100%;text-align: center;height:70px;position:fixed;top:0; display:none;background-color:#FCFCFC;overflow-hidden;border-bottom:3px solid #ddd;z-index:1000;}
+.navbar ul{list-style: none;padding:0 0;}
 .navbar li{display: inline-block;padding:0 10px;}
 .navbar a{height:44px;width:100%;}
 .navbar a,.nav a{cursor:pointer;display: inline-block;color:#2c2c2c;transition: color 0.28s ease-in-out;
@@ -39,10 +39,24 @@ hr{width:60%;border:1px solid rgba(0,0,0,0.1)}
 .screen{width:100%;min-height:100%;padding-top:60px;}
 #work{background-color:rgba(190,190,190,0.2);}
 #cv{background-color:rgba(255,255,255,0.2);}
-.img{max-width:200px;display:inline-block;padding:10px 20px;}
-.img img{width:200px;height:200px;overflow: hidden;border-radius: 50%;display:block;}
+.img{display:block;padding:10px 10px;margin:5px 15px;
+background-color: #fff;
+    box-shadow: 0 1px 3px rgba(34, 25, 25, .4);
+    -moz-box-shadow: 0 1px 3px rgba(34, 25, 25, .4);
+    -webkit-box-shadow: 0 1px 3px rgba(34, 25, 25, .4);
+    filter: progid:DXImageTransform.Microsoft.Shadow(color = #adacac, direction = 135, strength = 2);
+	transition: box-shadow 0.3s ease-in-out;
+-moz-transition: -moz-box-shadow 0.3s ease-in-out;
+-webkit-transition: -webkit-box-shadow 0.3s ease-in-out;padding:0 10px;}
+	.img:hover {
+    box-shadow: 0 1px 5px rgba(34, 25, 25, .8);
+    -moz-box-shadow: 0 1px 5px rgba(34, 25, 25, .8);
+    -webkit-box-shadow: 0 1px 5px rgba(34, 25, 25, .8);
+    filter: progid:DXImageTransform.Microsoft.Shadow(color = #979797, direction = 135, strength = 3);
+}
+.img img{max-width:100%;min-height:100px;overflow: hidden;display:block;}
 .dis{text-align: center;padding-top:10px;}
-.contents{margin:0 auto;max-width:1000px;}
+.contents{margin:0 auto;max-width:1000px;z-index: 1;}
 @media screen and (max-width: 780px) {
 body{overflow:auto;}
 #bkg{display:none;}
@@ -55,6 +69,31 @@ body{overflow:auto;}
 <script src="animatescroll.min.js"></script>
 <script src="jquery.jscrollpane.min.js"></script>
 <script>
+var lib=[{
+	"title":"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
+	"img":"http://en.artscad.com/A-Imgs.nsf/0/97EA6D5E18B4DFEEC12577E0000323D1/$FILE/G.Jpg",
+	"dis":""
+	},{
+	"title":"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
+	"img":"http://4.bp.blogspot.com/-qRIqiy-8tT4/TxXlpN5n73I/AAAAAAAAQxw/6d_NqKRpeT4/s1600/47b8b905ae0dt.jpg",
+	"dis":""
+	},{
+	"title":"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
+	"img":"http://img0.liveinternet.ru/images/attach/c/4/81/375/81375592_Bouquet_dan_233mones.jpg",
+	"dis":""
+	},{
+	"title":"work",
+	"img":"http://nevsepic.com.ua/uploads/posts/2011-10/1317572887_www.nevsepic.com.ua_rose1_g.jpg",
+	"dis":""
+	},{
+	"title":"work",
+	"img":"https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg",
+	"dis":""
+	},{
+	"title":"work",
+	"img":"https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg",
+	"dis":""
+	}];
 var width=$(window).width();
 var device=(width<=768)?"small":"large";
 
@@ -82,8 +121,24 @@ if(device=="large"){
             $(".navbar").css("display","none");
         }
     });
+	
+	
+	
+	var l=lib.length;
+	var str='<div class="contents waterfall">';
+	for (i=0;i<l;i++){
+	str+="<div class=img><img src=\""+lib[i].img+"\"><div class=dis>"+lib[i].title+"</div></div>"
+	}str+="</div>";
+	console.log(str);
+	$("#work").html(str);
+	$('.waterfall').waterfall({ 
+	isAnimated: true,
+	autoresize: true
+})
+
 });
 
+	
 </script>
 </head>
 
@@ -118,19 +173,7 @@ if(device=="large"){
 </div>
 </div>
 <div class="screen" id="work">
-<div class="contents">
-<div class="img"><img src="https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg"><div class="dis">Work</div></div>
-<div class="img"><img src="https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg"><div class="dis">Work</div></div>
-<div class="img"><img src="https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg"><div class="dis">Work</div></div>
-<div class="img"><img src="https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg"><div class="dis">Work</div></div>
-<div class="img"><img src="https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg"><div class="dis">Work</div></div>
-<div class="img"><img src="https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg"><div class="dis">Work</div></div>
-<div class="img"><img src="https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg"><div class="dis">Work</div></div>
-<div class="img"><img src="https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg"><div class="dis">Work</div></div>
-<div class="img"><img src="https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg"><div class="dis">Work</div></div>
-<div class="img"><img src="https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg"><div class="dis">Work</div></div>
-<div class="img"><img src="https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg"><div class="dis">Work</div></div>
-</div>
+
 </div>
 
 <div class="screen" id="about">
@@ -140,5 +183,6 @@ The aim of my work is to encourage the wearer to play with the accessories, expl
 I work with resin, plastic and silver as my materials due to their lightness in weight. Every series uses one element as a component. To expand the wearers interaction with my work, I try to create jewellery that its function can be transformed allowing one piece of jewellery to be worn in different ways and on different parts of the body.
 </div>
 </div>
+<script src="jquery.waterfall.js"></script>
 </body>
 </html>
