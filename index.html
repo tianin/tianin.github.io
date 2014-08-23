@@ -34,7 +34,7 @@ hr{width:60%;border:1px solid rgba(0,0,0,0.1)}
 .navbar a,.nav a{cursor:pointer;font-size:16px;display: inline-block;color:#2c2c2c;transition: color 0.28s ease-in-out;
 -moz-transition: color 0.28s ease-in-out;
 -webkit-transition: color 0.28s ease-in-out;padding:0 10px;
-}.nav a{font-size:20px;font-weight: bold;}
+}.nav a{font-size:20px;}
 .nav a:hover,.navbar a:hover{color:#aaa;text-decoration:underline; padding-bottom:3px;}
 
 .screen{width:100%;min-height:100%;padding-top:60px;}
@@ -86,31 +86,43 @@ body{overflow:auto;}
 <script src="animatescroll.min.js"></script>
 <script src="jquery.jscrollpane.min.js"></script>
 <script>
-var catagory=["all","bracelets","pendants","neck","brooches","rings","earrings","bags"];
+var catagory=["All","Bracelets","Pendants","Necklaces","Brooches"];
 var lib=[{
-	"title":"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
-	"img":"http://en.artscad.com/A-Imgs.nsf/0/97EA6D5E18B4DFEEC12577E0000323D1/$FILE/G.Jpg",
-	"group":"neck"
+	"title":"Bracelets",
+	"img":"https://cloud.githubusercontent.com/assets/8266907/4020573/6094b570-2ac0-11e4-8148-b1d778127ca7.jpg",
+	"group":"Bracelets"
 	},{
-	"title":"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
-	"img":"http://4.bp.blogspot.com/-qRIqiy-8tT4/TxXlpN5n73I/AAAAAAAAQxw/6d_NqKRpeT4/s1600/47b8b905ae0dt.jpg",
-	"group":"neck"
+	"title":"Brooches",
+	"img":"https://cloud.githubusercontent.com/assets/8266907/4020572/510f4a0c-2ac0-11e4-9850-53ef22b6134a.jpg",
+	"group":"Brooches"
 	},{
-	"title":"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
-	"img":"http://img0.liveinternet.ru/images/attach/c/4/81/375/81375592_Bouquet_dan_233mones.jpg",
-	"group":""
+	"title":"Pendants",
+	"img":"https://cloud.githubusercontent.com/assets/8266907/4020570/43635a2e-2ac0-11e4-8263-00aa31480df7.jpg",
+	"group":"Pendants"
 	},{
-	"title":"work",
-	"img":"http://nevsepic.com.ua/uploads/posts/2011-10/1317572887_www.nevsepic.com.ua_rose1_g.jpg",
-	"group":""
+	"title":"Necklaces",
+	"img":"https://cloud.githubusercontent.com/assets/8266907/4020560/f6c29c8e-2abf-11e4-9be6-b61fc5a2d3ec.jpg",
+	"group":"Necklaces"
 	},{
-	"title":"work",
-	"img":"https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg",
-	"group":""
+	"title":"Pendants",
+	"img":"https://cloud.githubusercontent.com/assets/8266907/4020569/39375d8e-2ac0-11e4-89b1-31065da62aed.jpg",
+	"group":"Pendants"
 	},{
-	"title":"work",
-	"img":"https://cloud.githubusercontent.com/assets/8266907/3957105/94be9bec-2712-11e4-9163-95584a5d63cc.jpg",
-	"group":""
+	"title":"Pendants",
+	"img":"https://cloud.githubusercontent.com/assets/8266907/4020567/30873ee8-2ac0-11e4-9550-ad88e98b8e8a.jpg",
+	"group":"Pendants"
+	},{
+	"title":"Bracelets",
+	"img":"https://cloud.githubusercontent.com/assets/8266907/4020566/20c7cc48-2ac0-11e4-88fd-63ab20db6a26.jpg",
+	"group":"Bracelets"
+	},{
+	"title":"Bracelets",
+	"img":"https://cloud.githubusercontent.com/assets/8266907/4020559/f0e35ac4-2abf-11e4-8ef2-24ecc7110e24.jpg",
+	"group":"Bracelets"
+	},{
+	"title":"Bracelets",
+	"img":"https://cloud.githubusercontent.com/assets/8266907/4020558/e2baa9fc-2abf-11e4-9a73-e5b2dd29c4fa.jpg",
+	"group":"Bracelets\",\"Pendants"
 	}];
 var width=$(window).width();
 var device=(width<=768)?"small":"large";
@@ -132,7 +144,7 @@ if(device=="large"){
 
     $(window).scroll(function () {
 
-        if ($(this).scrollTop() > 120) {
+        if ($(this).scrollTop() > 200) {
 		$(".navbar").css("display","block");
 			
         } else {
@@ -154,10 +166,10 @@ if(device=="large"){
 });
 function c_shuffle(c){
 $('#grid').shuffle('shuffle', function($el, shuffle) {
-if(c=='all'){
-  return $el;
+if(c=='All'){
+  return true;
 }else{
- return $el.data('groups')==c;
+ return $.inArray(c, $el.data('groups')) !== -1;
 }
 });
 }	
@@ -172,13 +184,9 @@ $(document).ready(function() {
     sizer: null, // sizer element. Can be anything columnWidth is
     gutterWidth: 0, // a static number or function that tells the plugin how wide the gutters between columns are (in pixels)
     columnWidth: 0, // a static number or function that returns a number which tells the plugin how wide the columns are (in pixels)
-    delimeter: null, // if your group is not json, and is comma delimeted, you could set delimeter to ','
-    buffer: 0, // useful for percentage based heights when they might not always be exactly the same (in pixels)
-    initialSort: null, // Shuffle can be initialized with a sort object. It is the same object given to the sort method
-    throttle: $.throttle || null, // By default, shuffle will try to throttle the resize event. This option will change the method it uses
+    buffer: 10, // useful for percentage based heights when they might not always be exactly the same (in pixels)
     throttleTime: 300, // How often shuffle can be called on resize (in milliseconds)
     sequentialFadeDelay: 150, // Delay between each item that fades in when adding items
-    supported: Modernizr.csstransforms && Modernizr.csstransitions // supports transitions and transforms
 	 });
 });
 </script>
