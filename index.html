@@ -26,7 +26,7 @@ transition: opacity 0.32s ease-in-out;
     opacity: 0.6;	
 }
 hr{width:60%;border:1px solid rgba(0,0,0,0.1)}
-.nav{margin: 0 auto;max-width: 700px;padding-top:10px;}
+.nav{margin: 0 auto;max-width: 700px;padding-top:10px;text-align:center;}
 .navbar{margin: 0 auto;width: 100%;text-align: center;height:50px;position:fixed;top:0; display:none;background-color:#FCFCFC;overflow-hidden;border-bottom:3px solid #ddd;z-index:1000;}
 .navbar ul{list-style: none;padding:0 0;}
 .navbar li{display: inline-block;padding:0 10px;}
@@ -78,7 +78,7 @@ body{overflow:auto;}
 
 }
 @media (max-width:800px) {
-.img{margin:5px 1px;
+.img{margin:5px 1px;}
 }
 </style>
 <script src="jquery.min.js"></script>
@@ -121,11 +121,11 @@ $(".navbar li").css("padding","0 2px");
 }else if(width<730&&width>=500){
 $(".navbar li").css("padding","0 0");
 $(".navbar a").css("padding","0 5px");
-$(".navbar li").css("font-size","12px");
+$(".navbar a").css("font-size","12px");
 }else if(width<500){
 $(".navbar li").css("padding","0 0");
 $(".navbar a").css("padding","0 1px");
-$(".navbar li").css("font-size","11px");
+$(".navbar a").css("font-size","11px");
 }
 if(device=="large"){
 }
