@@ -11,7 +11,7 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 	a{text-decoration:none;}
 body{margin:0 auto;font-family: 'Open Sans', sans-serif;font-size:12px;background-color:#fff;}
-#home {background-image:url(https://cloud.githubusercontent.com/assets/8266907/4020435/835e64e6-2ab8-11e4-8387-1bf7989658ac.jpg);background-position:center center;background-repeat:no-repeat;background-size:cover;position:relative;top:0;left:0;width:100%;height:100%;}
+#home {background-image:url(bkg.jpg);background-position:center center;background-repeat:no-repeat;background-size:cover;position:relative;top:0;left:0;width:100%;height:100%;}
 .logo{margin: 0 auto;
 max-width: 70px;
 opacity: 0.9;
@@ -31,16 +31,16 @@ hr{width:60%;border:1px solid rgba(0,0,0,0.1)}
 .navbar ul{list-style: none;padding:0 0;}
 .navbar li{display: inline-block;padding:0 10px;}
 .navbar a{height:40px;width:100%;}
-.navbar a,.nav a{cursor:pointer;font-size:16px;display: inline-block;color:#2c2c2c;transition: color 0.28s ease-in-out;
+.navbar a,.nav a,#contact a{cursor:pointer;font-size:16px;display: inline-block;color:#2c2c2c;transition: color 0.28s ease-in-out;
 -moz-transition: color 0.28s ease-in-out;
 -webkit-transition: color 0.28s ease-in-out;padding:0 10px;
 }.nav a{font-size:20px;}
-.nav a:hover,.navbar a:hover{color:#aaa;text-decoration:underline; padding-bottom:3px;}
-
+.nav a:hover,.navbar a:hover{color:#aaa;text-decoration:underline;}
+#contact a:hover{color:#777;text-decoration:underline;}
 .screen{width:100%;min-height:100%;padding-top:60px;}
 #work{background-color:rgba(190,190,190,0.2);}
 #cv{background-color:rgba(255,255,255,0.2);}
-.img{max-width:400px;display:block;padding:10px 10px;margin:5px 15px;
+.img{max-width:260px;display:block;padding:10px 10px;margin:5px 15px;
 background-color: #fff;
     box-shadow: 0 1px 3px rgba(34, 25, 25, .4);
     -moz-box-shadow: 0 1px 3px rgba(34, 25, 25, .4);
@@ -55,7 +55,7 @@ background-color: #fff;
     -webkit-box-shadow: 0 1px 5px rgba(34, 25, 25, .8);
     filter: progid:DXImageTransform.Microsoft.Shadow(color = #979797, direction = 135, strength = 3);
 }
-.img img{max-width:100%;min-width:400px;overflow: hidden;display:block;}
+.img img{max-width:100%;min-width:200px;overflow: hidden;display:block;}
 .dis{text-align: center;padding-top:10px;}
 .contents{margin:0 auto;max-width:1000px;z-index: 1;}
 button{border:1px solid #CFCFCF ;
@@ -71,14 +71,13 @@ transition: background-color 0.3s ease-in-out;
 button:hover{background-color:#fff;color:#000;}
 button:focus{background-color:#ccc;}
 .row-fluid{margin-top:10px;}
-@media screen and (max-width: 780px) {
-body{overflow:auto;}
-#bkg{display:none;}
-#work{background-color:#fff;}
-
-}
+#about .contents{padding:0 10px;line-height:35px;margin-top:100px;}
+#contact{background-color:#999;}
+#contact .contents{line-height:35px;padding:0 10px;margin-top:100px;}
 @media (max-width:800px) {
+.nav a{font-size:13px;}
 .img{margin:5px 1px;}
+#about .contents,#contact .contents{padding:10 10px;line-height:25px;margin-top:10px;}
 }
 </style>
 <script src="jquery.min.js"></script>
@@ -120,9 +119,13 @@ var lib=[{
 	"img":"https://cloud.githubusercontent.com/assets/8266907/4020559/f0e35ac4-2abf-11e4-8ef2-24ecc7110e24.jpg",
 	"group":"Bracelets"
 	},{
-	"title":"Bracelets",
-	"img":"https://cloud.githubusercontent.com/assets/8266907/4020558/e2baa9fc-2abf-11e4-9a73-e5b2dd29c4fa.jpg",
-	"group":"Bracelets\",\"Pendants"
+	"title":"Pendants",
+	"img":"https://cloud.githubusercontent.com/assets/8266907/4020915/d838b1ae-2ad8-11e4-8054-07a8babd8afe.jpg",
+	"group":"Pendants"
+	},{
+	"title":"Pendants",
+	"img":"https://cloud.githubusercontent.com/assets/8266907/4020913/d0620b24-2ad8-11e4-83ac-7e9cba2fc8f4.jpg",
+	"group":"Pendants"
 	}];
 var width=$(window).width();
 var device=(width<=768)?"small":"large";
@@ -133,11 +136,11 @@ $(".navbar li").css("padding","0 2px");
 }else if(width<730&&width>=500){
 $(".navbar li").css("padding","0 0");
 $(".navbar a").css("padding","0 5px");
-$(".navbar a").css("font-size","13px");
+$(".navbar a").css("font-size","15px");
 }else if(width<500){
 $(".navbar li").css("padding","0 0");
 $(".navbar a").css("padding","0 2px");
-$(".navbar a").css("font-size","12px");
+$(".navbar a").css("font-size","13px");
 }
 if(device=="large"){
 }
@@ -176,7 +179,7 @@ if(c=='All'){
 $(document).ready(function() {
 window.setTimeout(function() {
     $('#grid').shuffle('update');
-}, 1000);
+}, 1200);
   var $grid = $('#grid')
 
   $grid.shuffle({
@@ -184,9 +187,6 @@ window.setTimeout(function() {
     group: 'all', // Filter group
     speed: 250, // Transition/animation speed (milliseconds)
     easing: 'ease-out', // css easing function to use
-    sizer: null, // sizer element. Can be anything columnWidth is
-    gutterWidth: 0, // a static number or function that tells the plugin how wide the gutters between columns are (in pixels)
-    columnWidth: 0, // a static number or function that returns a number which tells the plugin how wide the columns are (in pixels)
 	buffer: 10, // useful for percentage based heights when they might not always be exactly the same (in pixels)
     throttleTime: 300, // How often shuffle can be called on resize (in milliseconds)
     sequentialFadeDelay: 150, // Delay between each item that fades in when adding items
@@ -199,11 +199,11 @@ window.setTimeout(function() {
 <div class="navbar" role="navigation">
       
           <ul>
-             <li><a onclick="$('#home').animatescroll({scrollSpeed:1000});">HOME</a></li>
+ <li><a onclick="$('#home').animatescroll({scrollSpeed:1000});">HOME</a></li>
  <li><a onclick="$('#work').animatescroll({scrollSpeed:1000});">WORK</a></li>
  <li><a onclick="$('#about').animatescroll({scrollSpeed:1000});">ABOUT</a></li>
- <li><a onclick="$('#work').animatescroll({scrollSpeed:1000});">CONTACT</a></li>
- <li><a onclick="$('#cv').animatescroll({scrollSpeed:1000});">CV</a></li>
+ <li><a onclick="$('#contact').animatescroll({scrollSpeed:1000});">CONTACT</a></li>
+ <li><a href="https://cloud.githubusercontent.com/assets/8266907/4020996/2dd3a6de-2adc-11e4-8053-2894f04e6e58.jpg">CV</a></li>
           </ul>
     </div>
 
@@ -217,8 +217,8 @@ window.setTimeout(function() {
 <a onclick="$('#home').animatescroll({scrollSpeed:1000});">HOME</a>
 <a onclick="$('#work').animatescroll({scrollSpeed:1000});">WORK</a>
 <a onclick="$('#about').animatescroll({scrollSpeed:1000});">ABOUT</a>
-<a onclick="$('#work').animatescroll({scrollSpeed:1000});">CONTACT</a>
-<a onclick="$('#cv').animatescroll({scrollSpeed:1000});">CV</a>
+<a onclick="$('#contact').animatescroll({scrollSpeed:1000});">CONTACT</a>
+<a href="https://cloud.githubusercontent.com/assets/8266907/4020996/2dd3a6de-2adc-11e4-8053-2894f04e6e58.jpg">CV</a>
 </div>
 </div>
 <div class="screen" id="work">
@@ -227,9 +227,19 @@ window.setTimeout(function() {
 
 <div class="screen" id="about">
 <div class="contents">
-<h2>Artist Statement</h2>
+<h1>Artist Statement</h1>
 The aim of my work is to encourage the wearer to play with the accessories, exploring possible shapes and positions. The inspiration of my work comes from kaleidoscopes, architecture, magic balls and fractal patterns as well as natural forms. Some of work are derived from the parametric design and the work of Zaha Hadid. I am interested in products that are changeable and move mechanically. Besides thisAdditionally, I hope my designs promote playful and inquisitive feelings emotions for the wearer. The main focus of my work is to integrate mechanical movements with natural forms which evoke feelings and create an emphatic visual effect due to contrasting colours. <br><br>
 I work with resin, plastic and silver as my materials due to their lightness in weight. Every series uses one element as a component. To expand the wearers interaction with my work, I try to create jewellery that its function can be transformed allowing one piece of jewellery to be worn in different ways and on different parts of the body.
+</div>
+</div>
+<div class="screen" id="contact">
+<div class="contents">
+<h1>Contact</h1>
+<strong>&nbsp;&nbsp;&nbsp;&nbsp;Miss Ning Tian</strong><br><br>
+<strong>Mobile:</strong> +44 7926 681 672 <br>
+<strong>E-mail:</strong>   <u>tianinjewellery [at] gmail.com</u>,<br>
+ &nbsp;&nbsp;&nbsp;&nbsp; OR <u>tianning9018 [at] qq.com</u><br>
+‍Find me on <a href="http://www.weibo.com/txinba" target="_blank"><u><strong>weibo</strong></u></a> | <a href="https://www.facebook.com/profile.php?id=100006271684122"><u><strong>Facebook</strong></u></a><br>
 </div>
 </div>
 <script src="jquery.shuffle.js"></script>
